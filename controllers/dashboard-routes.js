@@ -9,6 +9,10 @@ router.get('/', useAuth, async (req,res) => {
             include:[User]
         });
         const posting = postData.map((post) => post.get({ plain: true }));
+        res.render('all-posts', {
+            layout:'dashboard', 
+            posts
+        });
     } catch (err) {
         res.redirect('login')
     }
