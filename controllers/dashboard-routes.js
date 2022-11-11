@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, User } = require('../models/');
 const useAuth = require('../utils/auth');
 
+// GET all Dashboard posts
 router.get('/', useAuth, async (req,res) => {
     try{
         const postData = await Post.findAll({
@@ -19,6 +20,7 @@ router.get('/', useAuth, async (req,res) => {
 });
 
 
+// GET new post 
 router.get('/new', useAuth, (req, res) => {
     res.render('new-post', {
         layout: 'dashboard',
